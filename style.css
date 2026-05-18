@@ -1,0 +1,165 @@
+:root { --primary-color: #0984e3; --secondary-color: #74b9ff; --victim-color: #6c5ce7; --child-color: #fdcb6e; --bg-color: #f4f6f9; --text-color: #2d3436; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
+.container { max-width: 800px; margin: 0 auto; padding: 15px; }
+
+/* スクリーンと基本要素 */
+.screen { display: none; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.screen.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.home-link { display: inline-block; margin-bottom: 15px; color: var(--primary-color); text-decoration: none; font-size: 14px; font-weight: bold; background: #e0f0ff; padding: 8px 16px; border-radius: 20px; transition: 0.2s;}
+.home-link:hover { background: var(--primary-color); color: white; }
+
+.identity-input-box { background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #eee; text-align: left; }
+.identity-input-box label { font-size:14px; font-weight:bold; display: block; margin-bottom: 5px; color: #555;}
+.identity-input-box input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; text-transform: uppercase; transition: 0.2s;}
+.identity-input-box input:focus { border-color: var(--primary-color); outline: none; }
+
+/* ゲージ */
+#gauge-container { background: #fafafa; padding: 15px; border-radius: 10px; border: 1px solid #eaeaea; margin-bottom: 20px;}
+.gauge-row { display: flex; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.gauge-row span { width: 85px; font-weight: bold; color: #444;}
+.bar-bg { flex-grow: 1; background: #dfe6e9; height: 14px; border-radius: 7px; overflow: hidden; }
+.bar { height: 100%; width: 0%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.aggressor { background: #ff7675; } .victim { background: var(--victim-color); } .caring { background: #55efc4; } .childlike { background: var(--child-color); }
+
+/* お部屋 */
+.room-guide { font-size:14px; text-align:center; font-weight:bold; color: var(--primary-color); margin-bottom: 10px;}
+#room { position: relative; width: 100%; height: 350px; background: #b2bec3; border: 4px solid #636e72; border-radius: 12px; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);}
+.room-item { position: absolute; width: 48px; height: 48px; font-size: 24px; cursor: pointer; background: white; border: 2px solid #2d3436; border-radius: 10px; display:flex; align-items:center; justify-content:center; transition: transform 0.1s, box-shadow 0.2s; box-shadow: 2px 2px 0 #2d3436;}
+.room-item:hover { transform: scale(1.1); box-shadow: 4px 4px 0 #2d3436; }
+.room-item.done { opacity: 0.4; pointer-events: none; filter: grayscale(100%); box-shadow: none; transform: translateY(2px);}
+
+#item-wish { top: 25px; left: 25px; }
+#item-abyss { top: 25px; right: 25px; background: #2d3436; color: white;}
+#item-phone { top: 130px; left: 50%; transform: translateX(-50%); }
+#item-tug { bottom: 110px; left: 25px; background: #ffeaa7;}
+#item-target { bottom: 110px; right: 25px; background: #fab1a0; }
+#item-darling { bottom: 25px; right: 25px; background: #ffcccc; border-color:#ff4757;}
+#item-eye { bottom: 25px; left: 25px; background: #e0f7fa;}
+
+/* 🐛 芋虫 */
+#item-bug { position: absolute; bottom: 10px; left: 45%; font-size: 24px; cursor: pointer; transition: transform 0.1s; user-select:none;}
+#item-bug:active { transform: scale(0.7); }
+#item-bug.dead { font-size: 35px; pointer-events: none; filter: drop-shadow(0 0 5px rgba(255,0,0,0.5));}
+#bug-speech { position: absolute; bottom: 50px; left: 35%; background: rgba(0,0,0,0.85); color: white; padding: 6px 10px; font-size: 12px; border-radius: 6px; z-index: 10; font-weight:bold; white-space: nowrap;}
+
+/* 絵文字グリッド */
+.emoji-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; max-height: 250px; overflow-y: auto; padding: 10px;}
+.emoji-grid::-webkit-scrollbar { width: 6px; }
+.emoji-grid::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+.emoji-btn { font-size: 28px; background: #f8f9fa; border: 2px solid #ddd; border-radius: 10px; padding: 12px 5px; cursor: pointer; text-align: center; transition: 0.2s;}
+.emoji-btn:hover { background: #e0f0ff; border-color: var(--secondary-color);}
+.emoji-btn.selected { border-color: var(--primary-color); background: #e0f0ff; box-shadow: 0 0 10px rgba(9, 132, 227, 0.3);}
+.emoji-name { display:block; font-size: 10px; font-weight: bold; margin-top: 5px; color: #555; line-height: 1.2;}
+
+/* 綱引きギミック */
+.tug-game-area { background: #f1f2f6; padding: 20px; border-radius: 12px; margin: 20px 0; text-align:center;}
+.tug-timer { font-size: 20px; font-weight: bold; color: #d63031; margin-bottom: 10px;}
+.tug-container { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; border-radius: 20px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);}
+.tug-btn { padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 8px; border:none; cursor: pointer; color: white; transition: 0.1s;}
+.tug-btn:active { transform: scale(0.9); }
+.tug-btn.me { background: #0984e3; box-shadow: 0 4px 0 #076bb8;}
+.tug-btn.me:active { box-shadow: 0 0 0 #076bb8; transform: translateY(4px);}
+.tug-btn.you { background: #ff7675; box-shadow: 0 4px 0 #d63031; opacity: 0.8; pointer-events:none; } /* 相手のボタンは押せない */
+.tug-bar-wrap { flex-grow: 1; height: 12px; background: #dfe6e9; margin: 0 15px; position: relative; border-radius: 6px;}
+.tug-heart { position: absolute; top: -12px; left: 50%; font-size: 28px; transform: translateX(-50%); transition: left 0.1s linear;}
+
+/* 運命の連打 */
+.target-area { position: relative; width: 100%; height: 200px; background: #2d3436; border-radius: 10px; overflow: hidden; margin: 15px 0; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);}
+.target-icon { position: absolute; font-size: 45px; cursor: pointer; user-select: none; transition: top 0.4s ease, left 0.4s ease; }
+.target-icon:active { transform: scale(0.8); }
+
+/* モーダル等 */
+.btn { display: block; width: 100%; box-sizing: border-box; padding: 16px; background: var(--primary-color); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 15px; transition: 0.2s;}
+.btn:hover { background: #076bb8; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);}
+.btn:active { transform: translateY(0); box-shadow: none;}
+.btn-large { font-size: 18px; padding: 18px; }
+
+#modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); display:flex; justify-content:center; align-items:center; z-index:2000; padding: 15px; box-sizing:border-box;}
+#modal-content { background:white; width:100%; max-width:450px; padding:25px; border-radius:15px; max-height: 85vh; overflow-y: auto; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+.hidden { display: none !important; }
+.option-btn { display: block; width: 100%; box-sizing: border-box; padding: 14px; margin-bottom: 10px; background: #f8f9fa; border: 2px solid #eee; border-radius: 10px; text-align: left; cursor: pointer; font-size: 14px; transition: 0.2s; color: #333; font-weight: bold;}
+.option-btn:hover { background: #e0f0ff; border-color: var(--secondary-color); color: var(--primary-color);}
+
+/* 圧演出 */
+body.extreme-pressure { animation: screenShake 0.4s infinite; }
+@keyframes screenShake { 0% { transform: translate(1px, 1px) rotate(0deg); } 50% { transform: translate(-1px, -2px) rotate(-0.5deg); } 100% { transform: translate(1px, -1px) rotate(0.5deg); } }
+.pressure-heartbeat { animation: heartbeat 0.4s infinite; background: #d63031 !important; color: white; box-shadow: 0 0 20px rgba(214, 48, 49, 0.8);}
+@keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+.result-identity { background: #f1f2f6; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; text-align: center; border: 1px dashed #ccc;}
+.gemi-comment { background: #e0f0ff; padding: 18px; border-left: 6px solid var(--primary-color); border-radius: 6px; font-size: 14px; text-align: left; margin-top: 20px; line-height: 1.6; color: #2d3436;}
+.share-actions { display: flex; gap: 12px; margin-top: 20px; }
+.action-btn { flex:1; padding: 14px; font-size: 14px; display:flex; align-items:center; justify-content:center; gap: 8px;}
+.mobile-save-guide { color:#d63031; font-weight:bold; font-size:13px; margin: 15px 0 10px; text-align:center;}
+#result-image { max-width:100%; border:3px solid #eee; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+
+/* チェックボックス */
+.checkbox-item { display: block; position: relative; padding-left: 32px; margin-bottom: 12px; cursor: pointer; font-size: 14px; text-align: left; font-weight: bold; color: #444;}
+.checkbox-item input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+.checkmark { position: absolute; top: 0; left: 0; height: 22px; width: 22px; background-color: #eee; border-radius: 5px; transition: 0.2s;}
+.checkbox-item:hover input ~ .checkmark { background-color: #ddd; }
+.checkbox-item input:checked ~ .checkmark { background-color: var(--primary-color); }
+.checkmark:after { content: ""; position: absolute; display: none; left: 8px; top: 4px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.checkbox-item input:checked ~ .checkmark:after { display: block; }
+
+/* --- 既存のCSSの最後に上書きしてください --- */
+
+/* LINE入力欄のデザイン強化 */
+.free-text-input {
+  width: 90%;
+  padding: 15px;
+  margin: 15px 0;
+  border: 2px solid #0984e3;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  background: #fdfdfd;
+  box-shadow: 0 4px 15px rgba(9, 132, 227, 0.1);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.free-text-input:focus {
+  border-color: #6c5ce7; /* 犠牲者カラーへ変化 */
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+  transform: translateY(-2px);
+}
+
+.free-text-input::placeholder {
+  color: #b2bec3;
+  font-style: italic;
+}
+
+/* ダーリンちゃんのセリフ枠 */
+.darling-chat {
+  background: #fff0f3;
+  border-left: 5px solid #ff4757;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+  color: #d63031;
+}
+
+/* ボタンのデザイン微調整 */
+.option-btn {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border: 2px solid #f1f2f6;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background: #e0f0ff;
+  border-color: #0984e3;
+  transform: translateX(5px);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理想のソシオ恋愛診断💓 | あなたの「深層心理」を暴く</title>
+  <meta name="description" content="既存の相性論を疑え！あなたが惹かれる『本当の理想像』を、特殊ギミックで炙り出します。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>💎</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header><h1><i class="fa-solid fa-vial-circle-check"></i> 理想のソシオ恋愛診断</h1></header>
+
+    <main>
+      <section id="start-screen" class="screen active">
+        <div class="start-box">
+          <a href="https://mofu-mitsu.github.io/lab.html" class="home-link"><i class="fa-solid fa-house"></i> ホームへ戻る</a>
+          <h2>「双対関係」が答えとは限らない。</h2>
+          <p>あなたが本能的に惹かれる相手の役割を特定します。</p>
+          <div class="identity-input-box">
+            <label for="type-input">📝 あなたの自認タイプ</label>
+            <input type="text" id="type-input" placeholder="例：INTJ、LII">
+            <label for="ideal-socio" style="margin-top:10px;">💖 気になるソシオタイプ</label>
+            <input type="text" id="ideal-socio" placeholder="例：ILI、IEE">
+          </div>
+          <button id="start-btn" class="btn btn-large">実験を開始する</button>
+        </div>
+      </section>
+
+      <section id="checkbox-screen" class="screen">
+        <h2>✅ Part 1: パートナーの絶対条件</h2>
+        <p>あなたが「いいな」と思う要素にすべてチェックを。</p>
+        <div id="checkbox-container"></div>
+        <button id="to-room-btn" class="btn">次へ（シミュレーションへ）</button>
+      </section>
+
+      <section id="room-screen" class="screen">
+        <div id="gauge-container">
+          <div class="gauge-row"><span>⚔️ 侵略を求む</span><div class="bar-bg"><div id="bar-aggressor" class="bar aggressor"></div></div></div>
+          <div class="gauge-row"><span>⛓️ 犠牲を求む</span><div class="bar-bg"><div id="bar-victim" class="bar victim"></div></div></div>
+          <div class="gauge-row"><span>🍵 保護を求む</span><div class="bar-bg"><div id="bar-caring" class="bar caring"></div></div></div>
+          <div class="gauge-row"><span>🧸 子どもを求む</span><div class="bar-bg"><div id="bar-childlike" class="bar childlike"></div></div></div>
+        </div>
+
+        <h2>🎭 Part 2: 理想の挙動観測</h2>
+        <p class="room-guide">すべてのアイコン（全7個）をタップしてね！</p>
+        <div id="room">
+          <button class="room-item" id="item-wish">🎁</button>
+          <button class="room-item" id="item-abyss">🌌</button>
+          <button class="room-item" id="item-phone">📱</button>
+          <button class="room-item" id="item-tug">⚖️</button>
+          <button class="room-item" id="item-target">🎯</button>
+          <button class="room-item" id="item-darling">👩🏻‍💻</button>
+          <button class="room-item" id="item-eye">👁️</button>
+          
+          <div id="item-bug">🐛</div>
+          <div id="bug-speech" class="hidden"></div>
+        </div>
+        <button id="submit-btn" class="btn hidden">解析結果を出力！</button>
+      </section>
+
+      <section id="result-screen" class="screen">
+        <div id="capture-area">
+          <h2>🎉 解析結果</h2>
+          <div id="result-identity" class="result-identity"></div>
+          <div id="result-content"></div>
+        </div>
+        <div class="share-actions">
+          <button id="save-img-btn" class="btn action-btn" style="background:#0984e3;"><i class="fa-solid fa-camera"></i> 保存</button>
+          <button id="share-nav-btn" class="btn action-btn" style="background:#2d3436;"><i class="fa-solid fa-share-nodes"></i> 共有</button>
+        </div>
+        <div id="img-output-area" class="hidden">
+          <p class="mobile-save-guide"><i class="fa-solid fa-mobile-screen"></i> スマホの方は下の画像を【長押し】して保存！</p>
+          <img id="result-image" src="" alt="診断結果">
+        </div>
+        <button id="retry-btn" class="btn" style="margin-top:20px;">再実験</button>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal-overlay" class="hidden"><div id="modal-content"></div></div>
+  <div id="custom-alert" class="hidden"><div class="alert-box"><div id="alert-msg"></div><button id="alert-close" class="btn">閉じる</button></div></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
