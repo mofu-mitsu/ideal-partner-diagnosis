@@ -163,3 +163,480 @@ body.extreme-pressure { animation: screenShake 0.4s infinite; }
   border-color: #0984e3;
   transform: translateX(5px);
 }
+/* 新ギミックの配置 */
+#item-fight { top: 120px; right: 20px; background: #ff7675; color: white; border-color: #d63031; }
+
+/* アイテム配置調整 */
+#item-situation { top: 120px; right: 20px; background: #ffeaa7; }
+
+/* LINE入力欄のデザイン強化 */
+.free-text-input {
+  width: 90%; padding: 15px; margin: 15px 0; border: 2px solid #0984e3;
+  border-radius: 12px; font-size: 16px; outline: none; background: #fdfdfd;
+  box-shadow: 0 4px 15px rgba(9, 132, 227, 0.1); transition: all 0.3s ease; box-sizing: border-box;
+}
+.free-text-input:focus {
+  border-color: #6c5ce7; box-shadow: 0 0 20px rgba(108, 92, 231, 0.3); transform: translateY(-2px);
+}
+.free-text-input::placeholder { color: #b2bec3; font-style: italic; }
+
+.darling-chat {
+  background: #fff0f3; border-left: 5px solid #ff4757; padding: 15px; border-radius: 8px;
+  margin: 15px 0; text-align: left; font-weight: bold; font-size: 14px; color: #d63031;
+}
+
+/* スマホ対応微調整 */
+@media screen and (max-width: 600px) {
+  #item-situation { top: 100px; right: 20px; }
+  .room-item { width: 42px; height: 42px; font-size: 20px; }
+}
+
+/* 新ミニゲーム（シチュエーション）用のCSS */
+#item-situation { bottom: 20px; right: 20px; background: #ffeaa7; }
+
+.sit-btn {
+  width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 10px;
+  font-weight: bold; font-size: 14px; border: none; cursor: pointer; transition: 0.1s;
+}
+.sit-btn:active { transform: scale(0.95); }
+.sit-aggressor { background: #ff7675; color: white; box-shadow: 0 4px 0 #d63031; }
+.sit-caring { background: #55efc4; color: #2d3436; box-shadow: 0 4px 0 #00b894; }
+.sit-childlike { background: #ffeaa7; color: #2d3436; box-shadow: 0 4px 0 #fdcb6e; }
+.sit-victim { background: #6c5ce7; color: white; box-shadow: 0 4px 0 #4834d4; }
+
+/* アイテム配置調整 */
+#item-situation { top: 120px; right: 20px; background: #ffeaa7; }
+#item-fight { top: 120px; left: 20px; background: #ff7675; color: white; border-color: #d63031; } /* 新ギミック！ */
+
+/* スマホ対応微調整 */
+@media screen and (max-width: 600px) {
+  #item-situation { top: 100px; right: 20px; }
+  #item-fight { top: 100px; left: 20px; }
+  .room-item { width: 42px; height: 42px; font-size: 20px; }
+}
+
+/* シチュエーション用プログレスバー */
+.sit-progress { width: 100%; height: 8px; background: #eee; border-radius: 4px; margin-bottom: 15px; overflow: hidden; }
+.sit-progress-bar { height: 100%; background: var(--primary-color); width: 25%; transition: 0.3s; }
+
+/* 新アイテム配置調整 */
+#item-clinic { top: 25px; right: 25px; background: #fff; border-color: #d63031; }
+#item-bugtoss { bottom: 110px; right: 25px; background: #fdcb6e; }
+#item-walldon { top: 130px; left: 25px; background: #2d3436; color: white; }
+#item-care { top: 130px; right: 25px; background: #55efc4; }
+
+/* スマホ対応微調整 */
+@media screen and (max-width: 600px) {
+  #item-clinic { top: 20px; right: 20px; }
+  #item-bugtoss { bottom: 80px; right: 20px; }
+  #item-walldon { top: 100px; left: 20px; }
+  #item-care { top: 100px; right: 20px; }
+}
+
+/* ミニゲーム専用CSS */
+.game-box { position: relative; height: 180px; background: #f1f2f6; border-radius: 12px; overflow: hidden; margin-bottom: 15px; border: 2px solid #dfe6e9;}
+.flying-bug { position: absolute; bottom: 10px; left: 20px; font-size: 40px; transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1); user-select: none; }
+.bug-shout { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-weight: bold; color: #d63031; font-size: 14px; background: white; padding: 5px 10px; border-radius: 15px; border: 2px solid #d63031; white-space: nowrap; opacity: 0; transition: 0.2s;}
+
+.wall-darling { font-size: 80px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1); transition: transform 0.1s linear; user-select: none; }
+.wall-alert { position: absolute; top: 10px; width: 100%; text-align: center; color: #d63031; font-weight: bold; font-size: 18px; z-index: 10;}
+
+/* 新アイコンの配置 */
+#item-clinic { top: 20px; right: 20px; background: #fff; border-color: #d63031; }
+#item-chase { top: 20px; left: 50%; transform: translateX(-50%); background: #6c5ce7; color: white;}
+#item-bugtoss { bottom: 100px; right: 20px; background: #fdcb6e; }
+#item-walldon { top: 100px; left: 20px; background: #2d3436; color: white; }
+#item-care { top: 100px; right: 20px; background: #55efc4; }
+
+@media screen and (max-width: 600px) {
+  .room-item { width: 40px; height: 40px; font-size: 18px; }
+  #item-clinic { top: 15px; right: 15px; }
+  #item-chase { top: 15px; left: 50%; }
+  #item-bugtoss { bottom: 70px; right: 15px; }
+  #item-walldon { top: 80px; left: 15px; }
+  #item-care { top: 80px; right: 15px; }
+}
+
+/* ミニゲーム専用CSS */
+.game-box { position: relative; height: 180px; background: #f1f2f6; border-radius: 12px; overflow: hidden; margin-bottom: 15px; border: 2px solid #dfe6e9;}
+.flying-bug { position: absolute; bottom: 10px; left: 20px; font-size: 40px; transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1); user-select: none; }
+.bug-shout { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-weight: bold; color: #d63031; font-size: 14px; background: white; padding: 5px 10px; border-radius: 15px; border: 2px solid #d63031; white-space: nowrap; opacity: 0; transition: 0.2s;}
+
+.wall-darling { font-size: 80px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1); transition: transform 0.1s linear; user-select: none; }
+.wall-alert { position: absolute; top: 10px; width: 100%; text-align: center; color: #d63031; font-weight: bold; font-size: 18px; z-index: 10;}
+
+.chase-darling { font-size: 60px; position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%) scale(1); transition: transform 0.1s linear; user-select: none;}
+
+/* --- モーダルのスクロール対応を強化！ --- */
+#modal-overlay { 
+  position: fixed; top:0; left:0; width:100%; height:100%; 
+  background: rgba(0,0,0,0.75); display: flex; justify-content: center; align-items: center; 
+  z-index: 2000; padding: 15px; box-sizing: border-box;
+}
+
+#modal-content { 
+  background: white; width: 100%; max-width: 450px; padding: 25px; border-radius: 15px; 
+  /* ★ ここが重要！はみ出したらスクロールする設定！ */
+  max-height: 85vh; overflow-y: auto; -webkit-overflow-scrolling: touch; 
+  text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.emoji-grid { 
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; 
+  padding: 10px;
+}
+
+.hidden { display: none !important; }
+
+/* その他は前回と同じでOK！ */
+
+/* 新アイコン（芋虫侵略）の配置 */
+#item-invasion { top: 120px; left: 50%; transform: translateX(-50%); background: #55efc4; }
+
+@media screen and (max-width: 600px) {
+  #item-invasion { top: 100px; left: 50%; }
+}
+
+/* スマホ長押しバグ防止用（前回と同じ） */
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+#stare-area, #tug-pull-btn, #target-icon, #item-bug, .throw-btn {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+/* --- 部屋のアイテム配置（13個綺麗に並べる！） --- */
+#room { position: relative; width: 100%; height: 380px; background: #b2bec3; border: 4px solid #636e72; border-radius: 12px; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);}
+.room-item { position: absolute; width: 45px; height: 45px; font-size: 22px; cursor: pointer; background: white; border: 2px solid #2d3436; border-radius: 10px; display:flex; align-items:center; justify-content:center; transition: transform 0.1s, box-shadow 0.2s; box-shadow: 2px 2px 0 #2d3436;}
+
+/* 1段目 */
+#item-wish { top: 10%; left: 10%; }
+#item-abyss { top: 10%; left: 30%; background: #2d3436; color: white;}
+#item-phone { top: 10%; left: 50%; transform: translateX(-50%); }
+#item-clinic { top: 10%; right: 30%; background: #fff; border-color: #d63031; }
+#item-fight { top: 10%; right: 10%; background: #ff7675; color: white; }
+
+/* 2段目 */
+#item-tug { top: 40%; left: 10%; background: #ffeaa7;}
+#item-target { top: 40%; left: 30%; background: #fab1a0; }
+#item-eye { top: 40%; left: 50%; transform: translateX(-50%); background: #e0f7fa;}
+#item-bugtoss { top: 40%; right: 30%; background: #fdcb6e; }
+#item-walldon { top: 40%; right: 10%; background: #2d3436; color: white; }
+
+/* 3段目 */
+#item-care { top: 70%; left: 20%; background: #55efc4; }
+#item-chase { top: 70%; left: 50%; transform: translateX(-50%); background: #6c5ce7; color: white;}
+#item-invasion { top: 70%; right: 20%; background: #55efc4; }
+
+/* スマホ対応の微調整 */
+@media screen and (max-width: 600px) {
+  .room-item { width: 38px; height: 38px; font-size: 18px; }
+  #room { height: 320px; }
+}
+
+/* ★★★ スマホの長押しフリーズ（コピーメニュー出現）を完全防止！ ★★★ */
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+#stare-area, #tug-pull-btn, #target-icon, #item-bug, .throw-btn {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* --- 結果画面の装飾 --- */
+#capture-area h2 {
+  font-size: 28px;
+  background: linear-gradient(transparent 70%, var(--secondary-color) 70%);
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.result-title {
+  font-size: 32px;
+  color: var(--victim-color);
+  font-weight: 900;
+  margin: 15px 0 5px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+}
+
+.result-sub {
+  font-size: 16px;
+  color: #636e72;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.desc-box {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 5px solid var(--victim-color);
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 16タイプ特定エリアのデザイン */
+#detail-result {
+  animation: fadeIn 0.5s ease;
+  background: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+}
+#item-mirror { bottom: 100px; left: 50%; transform: translateX(-50%); background: #fff; }
+/* スマホ用レスポンシブの強化 */
+@media screen and (max-width: 600px) {
+  .result-title { font-size: 24px; }
+  .result-sub { font-size: 12px; }
+  .screen { padding: 15px; }
+  .room-item { width: 42px; height: 42px; }
+  .share-actions { flex-direction: column; }
+  .action-btn { width: 100%; }
+}
+
+/* --- 部屋のアイテム配置（13個をバランス良く！） --- */
+.room-item {
+    box-shadow: 3px 3px 0 #2d3436;
+}
+
+/* 1段目 (5つ) */
+#item-wish    { top: 10%; left: 8%; }
+#item-abyss   { top: 10%; left: 28%; background: #2d3436; color: white; }
+#item-phone   { top: 10%; left: 50%; transform: translateX(-50%); }
+#item-clinic  { top: 10%; right: 28%; background: #fff; border-color: #d63031; }
+#item-fight   { top: 10%; right: 8%; background: #ff7675; color: white; }
+
+/* 2段目 (5つ) */
+#item-tug     { top: 45%; left: 8%; background: #ffeaa7; }
+#item-target  { top: 45%; left: 28%; background: #fab1a0; }
+#item-mirror  { top: 45%; left: 50%; transform: translateX(-50%); background: #ffffff; }
+#item-eye     { top: 45%; right: 28%; background: #e0f7fa; }
+#item-bugtoss { top: 45%; right: 8%; background: #fdcb6e; }
+
+/* 3段目 (3つ) */
+#item-walldon { top: 80%; left: 15%; background: #2d3436; color: white; }
+#item-care    { top: 80%; left: 50%; transform: translateX(-50%); background: #55efc4; }
+#item-chase   { top: 80%; right: 15%; background: #6c5ce7; color: white; }
+#item-invasion{ top: 45%; left: 50%; display:none; } /* 重複してたので隠す */
+
+/* 見つめ合い中のCSS（押した瞬間に変化！） */
+.staring-now {
+    background: #ff7675 !important;
+    box-shadow: 0 0 30px #ff7675 !important;
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+/* ⌛ ローディング画面の装飾 */
+#loading-overlay {
+    text-align: center;
+    padding: 50px 0;
+}
+.loader-content {
+    font-size: 50px;
+    color: var(--primary-color);
+}
+.loader-content p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+/* スマホ用微調整 */
+@media screen and (max-width: 600px) {
+    #room { height: 420px; }
+    .room-item { width: 40px; height: 40px; font-size: 20px; }
+}
+
+/* 見つめ合いの箱のスタイルを強化 */
+.stare-box {
+  font-size: 60px;
+  cursor: pointer;
+  margin: 20px auto;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  background: #ffcccc;
+  /* ★ これが重要！スマホのスクロールや選択を無効化して長押しに専念させる！ */
+  touch-action: none; 
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* --- 結果画面の透過対策を強化！ --- */
+#capture-area {
+  background-color: #ffffff !important; /* 確実に白背景にする */
+  padding: 20px;
+  border-radius: 12px;
+}
+
+#detail-result {
+  animation: fadeIn 0.5s ease;
+  background-color: #ffffff !important; /* ここが半透明にならないように固定 */
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+  opacity: 1 !important; /* 透過を強制解除 */
+  border: 2px dashed #6c5ce7;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+/* ついでにマッチ度エリアも透過なしにする */
+.compatibility-box {
+  background-color: #f8f9fa !important;
+  border: 2px dashed #0984e3;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* --- ✉️ 招待状（インビテーション）スタイル --- */
+.invitation-card {
+  text-align: left;
+  font-family: "Shippori Mincho", "MS PMincho", serif; /* 高級感のある明朝体 */
+  line-height: 1.9;
+  color: #2d3436;
+  margin: 30px 0;
+  padding: 30px;
+  background: #fffdf5; /* 柔らかな紙の色 */
+  border: 2px solid #dcdde1;
+  position: relative;
+  border-radius: 2px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1), inset 0 0 50px rgba(255,255,255,1);
+  overflow: hidden;
+}
+
+/* 招待状の内側の飾り枠 */
+.invitation-card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid #00cec9; /* 理想診断のメインカラー */
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* 招待状のタイトル強調 */
+.invitation-card h3 {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #00cec9;
+  letter-spacing: 4px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.invitation-card p {
+  margin-bottom: 15px;
+  font-size: 15px;
+  text-indent: 1em; /* 文頭下げ */
+}
+
+/* 封蝋（シーリングスタンプ）風の飾り */
+.wax-seal {
+  width: 40px;
+  height: 40px;
+  background: #ff7675;
+  border-radius: 50%;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transform: rotate(-10deg);
+  opacity: 0.8;
+}
+
+/* スタートボタンを少し浮かせて招待状の後に配置 */
+#start-btn {
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+/* --- ✉️ 招待状（インビテーション）手描きVer. --- */
+.invitation-card {
+  text-align: left;
+  /* ★ 手描き風フォントを適用！ */
+  font-family: 'Yomogi', cursive; 
+  line-height: 2.0; /* 行間を広げて読みやすく */
+  color: #2d3436;
+  margin: 30px auto;
+  padding: 35px 25px;
+  background: #fffdf5; 
+  border: 1px solid #dcdde1;
+  position: relative;
+  border-radius: 5px;
+  /* 紙の質感を出す影 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+  max-width: 90%; /* スマホではみ出さないように */
+}
+
+/* 万年筆のインクが染みたような質感を出す演出 */
+.invitation-card p {
+  margin-bottom: 18px;
+  font-size: 16px; /* 少し大きくして見やすく */
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-indent: 0; /* 手書きなのでインデントなしでも自然 */
+}
+
+/* 招待状のタイトル（ここだけ少し整った感じに） */
+.invitation-card h3 {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #00cec9;
+  letter-spacing: 0.5em;
+  opacity: 0.7;
+}
+
+/* 封蝋（シーリングスタンプ）をもっとリアルに */
+.wax-seal {
+  width: 45px;
+  height: 45px;
+  background: radial-gradient(#ff7675, #d63031);
+  border-radius: 50%;
+  margin: 10px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.9);
+  font-size: 22px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+  transform: rotate(-15deg);
+  border: 2px solid rgba(0,0,0,0.05);
+}
+
+/* スマホ用：文字が潰れないように */
+@media screen and (max-width: 600px) {
+  .invitation-card {
+    padding: 25px 15px;
+  }
+  .invitation-card p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
