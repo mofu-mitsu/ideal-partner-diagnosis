@@ -3,11 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>理想のソシオ恋愛診断💓 | あなたの「深層心理」を暴く</title>
-  <meta name="description" content="既存の相性論を疑え！あなたが惹かれる『本当の理想像』を、特殊ギミックで炙り出します。">
+  
+  <!-- ★ SEO基本設定 ★ -->
+  <title>理想のソシオニクス恋愛診断💓 | あなたの「真の理想」を暴く</title>
+  <meta name="description" content="既存の相性論を疑え！ソシオニクスの理論に基づき、あなたが本能的に惹かれる相手の役割（侵略者・犠牲者・保護者・子ども）を特殊ギミックで炙り出します。">
+  <meta name="keywords" content="ソシオニクス, 恋愛診断, 相性診断, 心理テスト, 16タイプ, LII, ILI, 恋愛スタイル">
+  <meta name="author" content="Mitsuki">
+
+  <!-- ★ OGP設定 (SNS共有時の見栄え) ★ -->
+  <meta property="og:title" content="理想のソシオニクス恋愛診断💓">
+  <meta property="og:description" content="「双対関係」が答えとは限らない。あなたが惹かれる真の理想像を、体験型ミニゲームで解読します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mofu-mitsu.github.io/ideal-partner-diagnosis/">
+  <meta property="og:image" content="https://mofu-mitsu.github.io/ideal-partner-diagnosis/ogp.png">
+  <meta property="og:site_name" content="理想のソシオニクス恋愛診断">
+  
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="理想のソシオニクス恋愛診断💓">
+  <meta name="twitter:description" content="既存の相性論を疑え。あなたの深層心理に眠る理想のパートナー像を特定します。">
+  <meta name="twitter:image" content="https://mofu-mitsu.github.io/ideal-partner-diagnosis/ogp.png">
+
+  <!-- ★ 絵文字ファビコン 💎 ★ -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>💎</text></svg>">
+
+  <!-- 外部ライブラリ -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- ★ 手描き風フォントの読み込み -->
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,15 +42,26 @@
       <section id="start-screen" class="screen active">
         <div class="start-box">
           <a href="https://mofu-mitsu.github.io/lab.html" class="home-link"><i class="fa-solid fa-house"></i> ホームへ戻る</a>
+          
           <h2>「双対関係」が答えとは限らない。</h2>
-          <p>あなたが本能的に惹かれる相手の役割を特定します。</p>
+          
+          <!-- ✉️ 招待状セクション -->
+          <div class="invitation-card">
+            <h3>INVITATION</h3>
+            <p>ソシオニクスの定説では、自分を補う「双対（Dual）」こそが理想とされます。しかし、本当にそうでしょうか？</p>
+            <p>安らぎ（Si）よりも深淵（Ni）を覗き込みたい衝動。支配されるよりも、対等に奪い合いたい本能。あなたの<b>知的好奇心</b>は、理論上の正解を裏切るかもしれません。</p>
+            <p>この実験では、特殊ギミックを通じてあなたの「無意識の渇望」を解析し、256通りのマトリックスから真の理想像を特定します。</p>
+            <div class="wax-seal">💎</div>
+          </div>
+          
           <div class="identity-input-box">
             <label for="type-input">📝 あなたの自認タイプ</label>
             <input type="text" id="type-input" placeholder="例：INTJ、LII">
-            <label for="ideal-socio" style="margin-top:10px;">💖 気になるソシオタイプ</label>
+            <label for="ideal-socio" style="margin-top:15px;">💖 気になるソシオタイプ</label>
             <input type="text" id="ideal-socio" placeholder="例：ILI、IEE">
           </div>
-          <button id="start-btn" class="btn btn-large">実験を開始する</button>
+          
+          <button id="start-btn" class="btn btn-large">実験（デバッグ）を開始する</button>
         </div>
       </section>
 
@@ -46,16 +81,24 @@
         </div>
 
         <h2>🎭 Part 2: 理想の挙動観測</h2>
-        <p class="room-guide">すべてのアイコン（全7個）をタップしてね！</p>
+        <p class="room-guide">すべてのアイコン（全13個）をタップしてね！</p>
         <div id="room">
           <button class="room-item" id="item-wish">🎁</button>
           <button class="room-item" id="item-abyss">🌌</button>
           <button class="room-item" id="item-phone">📱</button>
+          <button class="room-item" id="item-clinic">🏥</button>
+          <button class="room-item" id="item-fight">🥊</button>
+          <button class="room-item" id="item-mirror">🪞</button>
           <button class="room-item" id="item-tug">⚖️</button>
           <button class="room-item" id="item-target">🎯</button>
-          <button class="room-item" id="item-darling">👩🏻‍💻</button>
           <button class="room-item" id="item-eye">👁️</button>
+          <button class="room-item" id="item-bugtoss">⚾</button>
+          <button class="room-item" id="item-walldon">🧱</button>
           
+          <button class="room-item" id="item-care">🛏️</button>
+          <button class="room-item" id="item-chase">⛓️</button>
+          <button class="room-item" id="item-invasion">🌿</button>
+
           <div id="item-bug">🐛</div>
           <div id="bug-speech" class="hidden"></div>
         </div>
@@ -63,11 +106,25 @@
       </section>
 
       <section id="result-screen" class="screen">
+        <!-- ⌛ ローディング画面 -->
+        <div id="loading-overlay" class="hidden">
+          <div class="loader-content">
+            <i class="fa-solid fa-atom fa-spin"></i>
+            <p>理想の魂を抽出中...</p>
+          </div>
+        </div>
         <div id="capture-area">
           <h2>🎉 解析結果</h2>
           <div id="result-identity" class="result-identity"></div>
           <div id="result-content"></div>
+
+          <!-- ★ 16タイプ特定ギミック！ -->
+          <div id="extra-diagnosis-area" style="margin-top:20px;">
+            <button id="detail-btn" class="btn" style="background:#6c5ce7;">🔍 理想の16タイプを特定する！</button>
+            <div id="detail-result" class="hidden" style="margin-top:15px; padding:15px; background:#f1f2f6; border-radius:8px; border:2px dashed #6c5ce7;"></div>
+          </div>
         </div>
+        
         <div class="share-actions">
           <button id="save-img-btn" class="btn action-btn" style="background:#0984e3;"><i class="fa-solid fa-camera"></i> 保存</button>
           <button id="share-nav-btn" class="btn action-btn" style="background:#2d3436;"><i class="fa-solid fa-share-nodes"></i> 共有</button>
