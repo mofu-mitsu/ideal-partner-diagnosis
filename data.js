@@ -120,7 +120,7 @@ const darlingLineLogic = [
 const clinicSituation = {
   q: "【🏥 整骨院のクレーマー】<br>理不尽に怒鳴るカスハラ老害に遭遇！パートナーにどうしてほしい？",
   opts: [
-    { text: "「ふざけるな！」と代わりに怒鳴って撃退してほしい", scoreType: "aggressor", scoreChange: 3 }, // 強い相手を求む
+    { text: "「ふざけるな！」と代わりに怒鳴って撃退してほしい", scoreType: "aggressor", scoreChange: 6 }, // 強い相手を求む
     { text: "冷静に老害の矛盾を論破してほしい", scoreType: "childlike", scoreChange: 3 }, // Ti的強さ（Ne/Ti）を求む
     { text: "「店長さん可哀想…」と一緒に心を痛めて寄り添ってほしい", scoreType: "caring", scoreChange: 3 }, // 共感・ケアを求む
     { text: "「人間って愚かだね…」と深い達観を見せてほしい", scoreType: "victim", scoreChange: 3 } // Ni的な深淵を求む
