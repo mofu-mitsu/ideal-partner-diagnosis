@@ -65,19 +65,55 @@ const resultsData = {
   }
 };
 
-// ★ 逆転ロジック！自分が取る行動の「逆」を相手に求めている
 const darlingLineLogic = [
-  // 自分が煽る(Se) -> 相手に服従(Victim)を求む
-  { keywords: ["きも", "イラ", "嫌い", "うるさ", "キモ", "ゴミ", "カス", "死ね", "オエー"], scoreType: "victim", scoreChange: 3, reply: "「煽ってくるやん。私を服従させたいんやね？生粋の『犠牲者』キラーってわけだ♡」" },
-  // 自分が愛する(Si) -> 相手に甘える(Childlike)を求む
-  { keywords: ["好き", "すき", "愛し", "会いたい", "ダーリン"], scoreType: "childlike", scoreChange: 2, reply: "「優しいなぁ。そういう甘やかしてくれるとこ、好きよ♡（子どもみたいに甘えさせてね）」" },
-  // 自分がポエム(Ni) -> 相手に強引(Aggressor)を求む
-  { keywords: ["観測", "輪郭", "境界", "運命", "深い", "闇", "虚無", "沈黙", "視線"], scoreType: "aggressor", scoreChange: 3, reply: "「……エモいね。概念で私を縛るより、私に強く引っ張ってほしいんやろ？♡」" },
-  // 自分が理屈・はぐらかし(Ne) -> 相手にお世話・受容(Caring)を求む
-  { keywords: ["さあ", "わからない", "どうだろ", "わからん", "理由", "なぜ", "定義", "意味", "分析", "論理"], scoreType: "caring", scoreChange: 2, reply: "「あはは！不器用やなぁ。論理で逃げても無駄よ、私が全部受け止めてあげるわ♡」" },
-  { condition: function(text) { return /^[^\w\sぁ-んァ-ヶ一-龠]+$/.test(text) || text.length <= 2; }, scoreType: "victim", scoreChange: 2, reply: "「短ッ。記号だけ？力技で私を黙らせたいってことやね♡」" },
-  { condition: function(text) { return text.length > 10 && (text.match(/[一-龠]/g) ||[]).length > text.length * 0.4; }, scoreType: "aggressor", scoreChange: 2, reply: "「漢字多くて堅っ苦しい！私みたいな強引なヤツにペース乱されたいんやろ？♡」" },
-  { keywords:[], scoreType: "caring", scoreChange: 2, reply: "「ふふっ、なるほどね。私が優しくリードしてあげるわ♡」" }
+  // ⚔️ 侵略者を求める判定（強気な態度、煽り、不遜な愛）
+  { 
+    keywords: ["きも", "イラ", "嫌い","きらい" ,"嫌", "うるさ", "キモ", "ゴミ", "カス", "死ね", "オエー", "おえー", "きしょ", "あんぽんたん", "アンポンタン", "と思ったか", "でも思ったか", "ばか","バカ","馬鹿","アホ","あほ","プライバシー","いやだ"], 
+    scoreType: "aggressor", scoreChange: 4, 
+    reply: "「あはは！『好きと言うと思ったか』やて？強気やなぁ！そういうバチバチにやり合える強さ、嫌いじゃないわよ♡」" 
+  },
+  
+  // 🧸 子どもを求める判定（遊び、変なもの、無邪気）
+  { 
+    keywords: ["遊ぼ", "あそぼ", "面白", "おもろ", "🐛", "芋虫", "ボタン", "何これ", "笑", "ｗ", "ww"], 
+    scoreType: "childlike", scoreChange: 3, 
+    reply: "「あはは、変なもん送ってこんといて！一緒にバカやって遊べる『子ども』タイプが理想なんやね♡」" 
+  },
+  
+  // ⛓️ 犠牲者を求める判定（支配、孤独、深淵、概念）
+  { 
+    keywords: ["観測", "輪郭", "境界", "運命", "深い", "闇", "虚無", "沈黙", "視線", "従え", "跪け", "私のもの"], 
+    scoreType: "victim", scoreChange: 3, 
+    reply: "「……深淵を覗いてるね。自分に従うミステリアスな『犠牲者』を支配したいんや……ゾクゾクするわ♡」" 
+  },
+  
+  // 🍵 保護者を求める判定（ケア、安心、癒やし）
+  { 
+    keywords: ["好き","すき","お世話","愛し", "会いたい", "ダーリン", "落ち着く", "安心", "守って", "助けて"], 
+    scoreType: "caring", scoreChange: 3, 
+    reply: "「素直で可愛いね♡ 全てを包み込んでお世話してくれる『保護者』の愛を求めてるんやね。」" 
+  },
+  { 
+    condition: function(text) { return /^[ぁ-んー]+$/.test(text) && text.length >= 4; }, 
+    scoreType: "childlike", scoreChange: 3, 
+    reply: "「ひらがなばっかり！赤ちゃんみたいで可愛いな👶 無邪気な『子ども』タイプを愛でたいんやね？」" 
+  },
+  // ⚠️ 特殊：短すぎ or 記号のみ
+  { 
+    condition: function(text) { return /^[^\w\sぁ-んァ-ヶ一-龠]+$/.test(text) || text.length <= 2; }, 
+    scoreType: "aggressor", scoreChange: 2, 
+    reply: "「短ッ！適当にあしらってるん？その雑な感じ、自分と同等かそれ以上の強さを求めてる証拠やねｗ」" 
+  },
+  { 
+    condition: function(text) { return text.length > 10 && (text.match(/[一-龠]/g) ||[]).length > text.length * 0.4; }, 
+    scoreType: "victim", scoreChange: 3, 
+    reply: "「漢字多くて堅っ苦しい！でも、そこまで深読み(Ni)して焦ってるの……ゾクゾクするわね♡（『犠牲者』の深淵を求めてるね）」" 
+  },
+  // デフォルト
+  { 
+    keywords:[], scoreType: "caring", scoreChange: 2, 
+    reply: "「ふふ、なるほどね。あなたの理想、だいたい分かったわ♡」" 
+  }
 ];
 
 // ★ カスハラ老害（4択シチュエーション）
