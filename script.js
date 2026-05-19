@@ -28,24 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return array;
   }
-  document.getElementById("submit-btn").onclick = () => {
-    // 画面を切り替えてローディングを表示
-    document.getElementById("room-screen").classList.remove("active");
-    document.getElementById("result-screen").classList.add("active");
-    
-    const captureArea = document.getElementById("capture-area");
-    const loading = document.getElementById("loading-overlay");
-    
-    captureArea.classList.add("hidden");
-    loading.classList.remove("hidden");
 
-    // 2秒間ローディングを見せてから、中身を生成する
-    setTimeout(() => {
-        loading.classList.add("hidden");
-        captureArea.classList.remove("hidden");
-        processResult(); // ここで計算と表示を実行！
-    }, 2000);
-  };
   window.updateGauge = () => {
     let max = 1;
     for (const v of Object.values(window.scores)) { if (v > max) max = v; }
@@ -129,7 +112,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (target.id === "submit-btn") processResult();
+// --- 解析結果を出力（これ「だけ」をイベントデリゲーションの中に残してね！） ---
+    if (target.id === "submit-btn") {
+        // 1. 画面を切り替えてローディングを表示
+        document.getElementById("room-screen").classList.remove("active");
+        document.getElementById("result-screen").classList.add("active");
+        
+        const captureArea = document.getElementById("capture-area");
+        const loading = document.getElementById("loading-overlay");
+        
+        captureArea.classList.add("hidden");
+        loading.classList.remove("hidden");
+
+        // 2. 2秒間ローディング演出をしてから送信
+        setTimeout(() => {
+            loading.classList.add("hidden");
+            captureArea.classList.remove("hidden");
+            processResult(); // この中で1回だけGAS送信される！
+        }, 2000);
+        return;
+    }
 // 保存ボタンの処理
     if (target.id === "save-img-btn") {
       const captureArea = document.getElementById("capture-area");
