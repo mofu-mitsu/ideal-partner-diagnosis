@@ -792,3 +792,45 @@ body.extreme-pressure { animation: screenShake 0.4s infinite; }
   #room { height: 420px; }
   .room-item { width: 40px; height: 40px; font-size: 20px; }
 }
+
+/* --- ⚖️ 綱引きの視認性爆上げ！ --- */
+.tug-game-area {
+  padding: 10px;
+}
+
+.tug-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 15px 5px; /* 左右の余白を削る */
+  border-radius: 15px;
+}
+
+.tug-btn {
+  flex: 0 0 70px; /* ボタンの幅を固定して小さく */
+  padding: 10px 5px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tug-bar-wrap {
+  flex: 1; /* バーを極限まで長くする */
+  height: 24px; /* もっと太く！ */
+  background: #dfe6e9;
+  margin: 0 8px;
+  position: relative;
+  border-radius: 12px;
+  border: 3px solid #b2bec3;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.tug-heart {
+  position: absolute;
+  top: -8px; 
+  left: 50%;
+  font-size: 30px;
+  transform: translateX(-50%);
+  transition: left 0.1s linear;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
