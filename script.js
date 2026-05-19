@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const t = detailAns.tf; const e = detailAns.ei;
     let finalType = "不明";
 
+    // 4タイプ × T/F × E/I で16タイプを特定
     if (style === "aggressor") {
       if (t === "T" && e === "E") finalType = "SLE"; else if (t === "T" && e === "I") finalType = "LSI";
       else if (t === "F" && e === "E") finalType = "SEE"; else finalType = "ESI";
@@ -213,20 +214,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (t === "T" && e === "E") finalType = "ILE"; else if (t === "T" && e === "I") finalType = "LII";
       else if (t === "F" && e === "E") finalType = "IEE"; else finalType = "EII";
     }
-
-    const idV = document.getElementById("type-input").value.trim().toUpperCase();
-    let msg = "";
-    if (matrixMessages[idV] && matrixMessages[idV][finalType]) {
-      msg = matrixMessages[idV][finalType];
-    } else if (partnerMessages[finalType]) {
-      msg = partnerMessages[finalType];
-    } else {
-      msg = "君のこと、もっと知りたいな。";
-    }
+    
+    // ★ ここを partnerMessages（基本のセリフ）だけを出すように修正！
+    // マトリックスメッセージ（matrixMessages）は一切見ないようにしました。
+    let baseMsg = partnerMessages[finalType] || "君のこと、もっと知りたいな。理想に近づけるように頑張るよ。";
 
     document.getElementById("detail-result").innerHTML = `
       <h3 style="color:#6c5ce7; margin:0;">✨ 理想の16タイプ：【${finalType}】</h3>
-      <p style="font-size:14px; margin-top:10px; font-weight:bold; color:#d63031;"> ${finalType}からのメッセージ：<br><br>${msg}</p>
+      <div style="margin-top:10px; padding:12px; background:#fff; border-radius:8px; border:1px solid #ddd;">
+        <p style="font-size:14px; text-align:left; line-height:1.5; color:#2d3436; margin:0;">
+          <strong>${finalType}からの基本メッセージ：</strong><br><br>
+          「${baseMsg}」
+        </p>
+      </div>
     `;
     window.actionLog.events["16タイプ特定"] = finalType;
   }
