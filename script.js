@@ -1,4 +1,4 @@
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwYOeRtEfRrWnIBNylY6ctLKoIp0vregiw0cFnVEBtWSx9D7i3ZDztnSmUyNnoBfQj4Sg/exec";
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxAakJQ2ilukUtgIreHXp7f3hXO4YX9bxUN3j-g_Zw7CKymGUq_3h1Zp9VHwKAA29k/exec";
 
 window.scores = { aggressor: 0, victim: 0, caring: 0, childlike: 0 };
 window.itemsDone = 0;
