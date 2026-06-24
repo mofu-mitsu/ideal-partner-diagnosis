@@ -77,7 +77,7 @@ const darlingLineLogic = [
   { 
     keywords: ["遊ぼ", "あそぼ", "面白", "おもろ", "🐛", "芋虫", "ボタン", "何これ", "笑", "ｗ", "ww"], 
     scoreType: "childlike", scoreChange: 3, 
-    reply: "「あはは、変なもん送ってこんといて！一緒にバカやって遊べる『子ども』タイプが理想なんやね♡」" 
+    reply: "["あはは、変なもん送ってこんといて！一緒にバカやって遊べる『子ども』タイプが理想なんやね♡」" 
   },
   
   // ⛓️ 犠牲者を求める判定（支配、孤独、深淵、概念）
@@ -91,21 +91,22 @@ const darlingLineLogic = [
   { 
     keywords: ["好き","すき","お世話","愛し", "会いたい", "ダーリン", "落ち着く", "安心", "守って", "助けて"], 
     scoreType: "caring", scoreChange: 3, 
-    reply: "「素直で可愛いね♡ 全てを包み込んでお世話してくれる『保護者』の愛を求めてるんやね。」" 
+    reply: "「素創で可愛いね♡ 全てを包み込んでお世話してくれる『保護者』の愛を求めてるんやね。」" 
   },
   { 
     condition: function(text) { return /^[ぁ-んー]+$/.test(text) && text.length >= 4; }, 
     scoreType: "childlike", scoreChange: 3, 
     reply: "「ひらがなばっかり！赤ちゃんみたいで可愛いな👶 無邪気な『子ども』タイプを愛でたいんやね？」" 
   },
-  // ⚠️ 特殊：短すぎ or 記号のみ
+  // ⚠️ 特殊：短すぎ or 記号のみ（★ [一-龠] から [\u4E00-\u9FFF] へ変更！）
   { 
-    condition: function(text) { return /^[^\w\sぁ-んァ-ヶ一-龠]+$/.test(text) || text.length <= 2; }, 
+    condition: function(text) { return /^[^\w\sぁ-んァ-ヶ\u4E00-\u9FFF]+$/.test(text) || text.length <= 2; }, 
     scoreType: "aggressor", scoreChange: 2, 
     reply: "「短ッ！適当にあしらってるん？その雑な感じ、自分と同等かそれ以上の強さを求めてる証拠やねｗ」" 
   },
+  // （★ [一-龠] から [\u4E00-\u9FFF] へ変更！）
   { 
-    condition: function(text) { return text.length > 10 && (text.match(/[一-龠]/g) ||[]).length > text.length * 0.4; }, 
+    condition: function(text) { return text.length > 10 && (text.match(/[\u4E00-\u9FFF]/g) ||[]).length > text.length * 0.4; }, 
     scoreType: "victim", scoreChange: 3, 
     reply: "「漢字多くて堅っ苦しい！でも、そこまで深読み(Ni)して焦ってるの……ゾクゾクするわね♡（『犠牲者』の深淵を求めてるね）」" 
   },
